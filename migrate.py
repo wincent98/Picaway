@@ -4,16 +4,24 @@ import requests
 import json
 from logger import getLogger
 from MatchInfo import MatchInfo 
+import yaml
 logger=getLogger()
 
-picgoServerUrl="http://127.0.0.1:36677/upload"
+# 读取配置文件
+config=None
+with open("config.yml", "r", encoding="utf-8") as yaml_file:
+    config = yaml.safe_load(yaml_file)
+yaml_file.close()
+picgo_server_url=config["migrate"]["picgo"]["server_url"]
+result_filepath = config["scan"]["match"]["result_filepath"]
+
 def uploadByPicgo(matchInfo):
     name=matchInfo.filepath
     data={
         "list":matchInfo.picUrls
     }
     logger.info(f"{name}: 开始上传")
-    res=requests.post(picgoServerUrl,json=data)
+    res=requests.post(picgo_server_url,json=data)
     resObj=json.loads(res.text)
     if res.status_code!=200 or resObj["success"]==False:
         logger.error(f"{name}: 上传失败, {res}")
@@ -22,7 +30,7 @@ def uploadByPicgo(matchInfo):
     return resObj["result"]
 
 # 反序列化
-output_file = open("output.json", "r", encoding="utf-8")
+output_file = open(result_filepath, "r", encoding="utf-8")
 
 load_data=json.load(output_file)
 matches=[MatchInfo.from_dict(data) for data in load_data]

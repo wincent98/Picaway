@@ -1,0 +1,18 @@
+scan:
+  # 扫描路径
+  directory: "C:\\Users\\admin\\AppData\\Local\\YNote\\"
+  match: 
+    # 匹配Markdown文件的正则表达式
+    md_regex: ".*\\.md$"
+    # 匹配图片链接的正则表达式
+    # pic_regex = re.compile(r"!\[.*\]\((.*?)\)")
+    pic_regex: "!\\[.*?\\]\\((.*?(?:sinaimg\\.cn).*?)\\)"
+    # 扫描结果文件
+    result_filepath: "output.json"
+migrate:
+  # picgo相关配置
+  picgo:
+    # 上传地址
+    server_url: "http://127.0.0.1:36677/upload"
+# log:
+#   filepath: ./app.log
