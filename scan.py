@@ -1,7 +1,5 @@
 import os
 import re
-import argparse
-import requests
 import json
 from logger import getLogger
 from MatchInfo import MatchInfo 
