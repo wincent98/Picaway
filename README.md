@@ -34,11 +34,17 @@
 
 ## 使用
 
-1. **[必需]安装[PicGo](https://molunerfinn.com/PicGo/), 并配置好图床信息**
-2. 配置`config.yml`, 指定你的md文件所在文件夹/图片匹配规则/Picgo上传地址等
-3. 执行`scan.py`, 会输出一个`output.json`
-4. 执行`migrate.py`, 开始上传, 耗费时长取决于你的图片数量和Picgo上传速度, 请耐心等待
-5. 上传完毕, 检查是否已被替换
+#### 环境准备
+
+1. **[必需]安装[PicGo](https://molunerfinn.com/PicGo/), 并配置好图床信息, 设置链接格式为markdown**
+2. python3
+
+#### 使用
+
+1. 配置`config.yml`, 指定你的md文件所在文件夹/图片匹配规则/Picgo上传地址等
+2. 执行`scan.py`, 会输出一个`output.json`
+3. 执行`migrate.py`, 开始上传, 耗费时长取决于你的图片数量和Picgo上传速度, 请耐心等待
+4. 上传完毕, 检查是否已被替换
 
 ### 注意事项
 

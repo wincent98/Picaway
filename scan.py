@@ -35,4 +35,4 @@ serialized_list = [match.to_dict() for match in matches]
 json.dump(serialized_list,output_file,indent=4,ensure_ascii=False)
 # 关闭输出文件
 output_file.close()
-logger.info("图片扫描完成, 请检查是否有不需要迁移的图片, 然后再执行migrate脚本上传")
+logger.info(f"扫描完成, 共{len(matches)}张图片, 请检查是否有不需要迁移的图片, 然后再执行migrate脚本上传")
