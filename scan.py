@@ -18,6 +18,7 @@ result_filepath = config["scan"]["match"]["result_filepath"]
 # 打开输出文件
 output_file = open(result_filepath, "w", encoding="utf-8")
 matches=[]
+picCnt=0
 # 遍历目录下的所有文件和子目录
 for root, dirs, files in os.walk(directory):
     for filename in files:
@@ -30,9 +31,10 @@ for root, dirs, files in os.walk(directory):
                 if len(picUrls)>0:
                     matchInfo=MatchInfo(filepath,picUrls)
                     matches.append(matchInfo)
+                    picCnt+=len(picUrls)
 # 序列化对象列表为 JSON
 serialized_list = [match.to_dict() for match in matches]
 json.dump(serialized_list,output_file,indent=4,ensure_ascii=False)
 # 关闭输出文件
 output_file.close()
-logger.info(f"扫描完成, 共{len(matches)}张图片, 请检查是否有不需要迁移的图片, 然后再执行migrate脚本上传")
+logger.info(f"扫描完成, 共{picCnt}张图片, 请检查是否有不需要迁移的图片, 然后再执行migrate脚本上传")
