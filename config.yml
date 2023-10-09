@@ -4,7 +4,7 @@ scan:
   match: 
     # 匹配Markdown文件的正则表达式
     md_regex: ".*\\.md$"
-    # 匹配图片链接的正则表达式
+    # 匹配图片链接的正则表达式, markdown格式
     # pic_regex: "!\\[.*?\\]\\(.*?\\)"
     # pic_regex: "!\\[.*?\\]\\((?:(?!jsdelivr).)*\\)"
     pic_regex: "(?:!\\[.*?\\]\\(((?:(?!jsdelivr).)*)\\))"

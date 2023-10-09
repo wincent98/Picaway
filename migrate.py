@@ -42,6 +42,7 @@ for match in matches:
     # 批量替换
     with open(match.filepath, "r", encoding="utf-8") as f:
         content = f.read()
+        # 匹配的是markdown格式, 上传返回也是markdown格式, 所以直接替换
         for search_text, replace_text in zip(match.picUrls, picsNew):
             content=content.replace(search_text, replace_text)
         with open(match.filepath, "w", encoding="utf-8") as ff:
